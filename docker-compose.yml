@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: mi_bd
+      MYSQL_USER: mi_usuario
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: mi_bd
+      MYSQL_USER: mi_usuario
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
